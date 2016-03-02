@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragment.DepartmentFragment"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#E0E0E0">
+    <TextView
+
+        android:background="@drawable/rect_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="搜索商品、品牌"
+        android:drawableLeft="@mipmap/search"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"/>
+</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#BDBDBD"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/listView_department"
+            android:background="#E0E0E0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:divider="#FFFFFF"
+            android:dividerHeight="1dp"
+            ></ListView>
+        <GridView
+            android:id="@+id/gridView_department"
+            android:background="#FFFFFF"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:numColumns="3"
+            android:layout_weight="3"></GridView>
+    </LinearLayout>
+
+
+</LinearLayout>
