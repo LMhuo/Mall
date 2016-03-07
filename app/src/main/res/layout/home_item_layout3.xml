@@ -61,7 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:text="price" />
+            android:text="price"
+            android:textColor="#D50000"/>
 
         <TextView
             android:id="@+id/textView_home_item_3_price02"
@@ -69,7 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:text="price" />
+            android:text="price"
+            android:textColor="#D50000"/>
     </LinearLayout>
 
 </LinearLayout>

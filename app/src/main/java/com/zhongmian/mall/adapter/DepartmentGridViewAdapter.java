@@ -1,6 +1,7 @@
 package com.zhongmian.mall.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.zhongmian.mall.R;
+import com.zhongmian.mall.activity.DepartmentBusinessActivity;
 import com.zhongmian.mall.utils.BitmapCache;
 
 import java.util.ArrayList;
@@ -63,7 +65,7 @@ public class DepartmentGridViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder =null;
         if (convertView==null){
             viewHolder = new ViewHolder();
@@ -77,6 +79,14 @@ public class DepartmentGridViewAdapter extends BaseAdapter {
 
         ImageLoader.ImageListener imageListener=ImageLoader.getImageListener(viewHolder.imageView,R.mipmap.ic_launcher,R.mipmap.ic_launcher);
         imageLoader.get(maps.get(position+count).get("icon"),imageListener);
+        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DepartmentBusinessActivity.class);
+                intent.putExtra("id",maps.get(position+count).get("id"));
+                context.startActivity(intent);
+            }
+        });
         viewHolder.textView.setText(maps.get(position+count).get("name"));
         return convertView;
     }

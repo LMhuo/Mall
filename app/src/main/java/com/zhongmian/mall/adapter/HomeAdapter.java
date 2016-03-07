@@ -1,6 +1,7 @@
 package com.zhongmian.mall.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.zhongmian.mall.R;
+import com.zhongmian.mall.activity.HomeBusinessActivity;
+import com.zhongmian.mall.activity.InformationActivity;
 import com.zhongmian.mall.utils.BitmapCache;
 import com.zhongmian.mall.utils.LogUtils;
 
@@ -98,7 +101,7 @@ public class HomeAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         String type = content_maps.get(position).get("type");
         ViewHolder1 viewHolder1 = null;
         ViewHolder2 viewHolder2 = null;
@@ -156,7 +159,9 @@ public class HomeAdapter extends BaseAdapter {
                 viewHolder1.pic.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "点击图片", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, HomeBusinessActivity.class);
+                        intent.putExtra("url", content_maps.get(position).get("url"));
+                        context.startActivity(intent);
                     }
                 });
 
@@ -169,13 +174,18 @@ public class HomeAdapter extends BaseAdapter {
                 viewHolder2.pic01.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "点击Left图片", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, HomeBusinessActivity.class);
+                        intent.putExtra("url", content_maps.get(position).get("url"));
+                        context.startActivity(intent);
                     }
                 });
                 viewHolder2.pic02.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "点击Right图片", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, HomeBusinessActivity.class);
+                        intent.putExtra("url", content_maps.get(position).get("url1"));
+                        context.startActivity(intent);
+//                        Toast.makeText(context, "点击了图片", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
@@ -183,21 +193,33 @@ public class HomeAdapter extends BaseAdapter {
                 ImageLoader.ImageListener imageListener4 = ImageLoader.getImageListener(viewHolder3.pic01, R.mipmap.loading, R.mipmap.ic_launcher);
                 ImageLoader.ImageListener imageListener5 = ImageLoader.getImageListener(viewHolder3.pic02, R.mipmap.loading, R.mipmap.ic_launcher);
                 imageLoader.get(content_maps.get(position).get("pic"), imageListener4, 540, 540);
-                imageLoader.get(content_maps.get(position).get("pic1"), imageListener5,540,540);
+                imageLoader.get(content_maps.get(position).get("pic1"), imageListener5, 540, 540);
                 viewHolder3.prodname01.setText(content_maps.get(position).get("prodname"));
                 viewHolder3.prodname02.setText(content_maps.get(position).get("prodname1"));
-                viewHolder3.price01.setText(content_maps.get(position).get("price"));
-                viewHolder3.price02.setText(content_maps.get(position).get("price1"));
+                viewHolder3.price01.setText("￥" +content_maps.get(position).get("price"));
+                viewHolder3.price02.setText("￥" +content_maps.get(position).get("price1"));
                 viewHolder3.pic01.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "点击Left图片", Toast.LENGTH_SHORT).show();
+                        String url = content_maps.get(position).get("url");
+                        String str[] = url.split("/");
+                        Intent intent1 = new Intent(context, InformationActivity.class);
+                        intent1.putExtra("id",str[3]);
+                        intent1.putExtra("type","2");
+                        context.startActivity(intent1);
+
                     }
                 });
                 viewHolder3.pic02.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "点击Right图片", Toast.LENGTH_SHORT).show();
+                        String url = content_maps.get(position).get("url1");
+                        String str[] = url.split("/");
+                        Intent intent1 = new Intent(context, InformationActivity.class);
+                        intent1.putExtra("id",str[3]);
+                        intent1.putExtra("type","2");
+                        context.startActivity(intent1);
+
                     }
                 });
                 break;

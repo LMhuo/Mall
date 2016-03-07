@@ -16,5 +16,12 @@ public class Uris {
     public static final String Brand_URL2 = "http://appservice.zhongmian.com/brand/list?channel=2&version=2.1.3";
     //分类
     public static final String DEPARTMENT_URL1 = "http://appservice.zhongmian.com/sc/listsat";
+    //首页商家主页 post解析
+    public static final String HOME_BUSINESS_URL = "http://appservice.zhongmian.com/topic";
+    //品牌商家post解析
+    public  static  final String BRAND_BUSINESS_URL="http://appservice.zhongmian.com/search";
+    //详情界面post解析
+    public static  final  String INFORMATION_URL="http://appservice.zhongmian.com/prod/info";
+
 
 }

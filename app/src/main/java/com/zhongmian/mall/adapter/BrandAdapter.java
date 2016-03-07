@@ -1,6 +1,7 @@
 package com.zhongmian.mall.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.zhongmian.mall.R;
+import com.zhongmian.mall.activity.BrandBusinessActivity;
 import com.zhongmian.mall.utils.BitmapCache;
 import com.zhongmian.mall.utils.LogUtils;
 import com.zhongmian.mall.view.BrandView01;
@@ -90,7 +92,7 @@ public class BrandAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         String type = maps.get(position).get("type");
         ViewHolder1 viewHolder1 = null;
         ViewHolder2 viewHolder2 = null;
@@ -161,13 +163,19 @@ public class BrandAdapter extends BaseAdapter {
                 viewHolder1.pic1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "点击了左边图片", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(context, BrandBusinessActivity.class);
+                        intent.putExtra("id",maps.get(position).get("id1"));
+                        context.startActivity(intent);
                     }
                 });
                 viewHolder1.pic2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "点击了右边图片", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(context, BrandBusinessActivity.class);
+                        intent.putExtra("id",maps.get(position).get("id2"));
+                        context.startActivity(intent);
                     }
                 });
                 break;
@@ -178,6 +186,9 @@ public class BrandAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "点击了文字", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, BrandBusinessActivity.class);
+                        intent.putExtra("id",maps.get(position).get("id"));
+                        context.startActivity(intent);
                     }
                 });
                 break;
